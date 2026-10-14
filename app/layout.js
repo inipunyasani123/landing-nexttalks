@@ -7,10 +7,10 @@ import "./globals.css";
 const interTight = Inter_Tight({ variable: "--font-inter-tight", subsets: ["latin"], weight: ["600", "700", "900"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"NextTalks","description":"Seri percakapan bulanan: empat pembicara, satu meja","url":"https://landing-nexttalks.vercel.app","inLanguage":"id"};
+const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"NextTalks","description":"Seri percakapan bulanan: empat pembicara, satu meja","url":"https://landing-nexttalks.pintuweb.id","inLanguage":"id"};
 
 export const metadata = {
-  metadataBase: new URL("https://landing-nexttalks.vercel.app"),
+  metadataBase: new URL("https://landing-nexttalks.pintuweb.id"),
   title: { default: "NextTalks — Empat Pembicara, Satu Meja", template: "%s — NextTalks" },
   description: "NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 \"Memutuskan dengan data yang tidak lengkap\", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.",
   applicationName: "NextTalks",
@@ -18,11 +18,11 @@ export const metadata = {
   authors: [{ name: "NextTalks" }],
   creator: "NextTalks",
   publisher: "NextTalks",
-  alternates: { canonical: "https://landing-nexttalks.vercel.app" },
+  alternates: { canonical: "https://landing-nexttalks.pintuweb.id" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://landing-nexttalks.vercel.app",
+    url: "https://landing-nexttalks.pintuweb.id",
     siteName: "NextTalks",
     title: "NextTalks — Empat Pembicara, Satu Meja",
     description: "NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 \"Memutuskan dengan data yang tidak lengkap\", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.",

@@ -2,7 +2,7 @@
 
 NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 "Memutuskan dengan data yang tidak lengkap", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.
 
-**Demo live:** https://landing-nexttalks.vercel.app
+**Demo live:** https://landing-nexttalks.pintuweb.id
 
 ![Tangkapan layar NextTalks](public/og.jpg)
 
