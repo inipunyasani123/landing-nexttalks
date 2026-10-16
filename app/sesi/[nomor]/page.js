@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ARSIP, BERIKUT, SITE, sesiByNomor } from '@/lib/sesi';
+import { ARSIP, BERIKUT, SITE, sesiByNomor, tanggalSesi } from '@/lib/sesi';
 import TranskripList from '../../components/TranskripList';
+
+/* Deskripsi meta maksimal 155 karakter, dipotong di batas kata. */
+const ringkas = (t, n = 155) => (t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1))}…`);
 
 export function generateStaticParams() {
   return ARSIP.map((a) => ({ nomor: String(a.nomor) }));
@@ -13,7 +16,7 @@ export async function generateMetadata({ params }) {
   if (!s) return {};
   return {
     title: `Sesi ${s.nomor}: ${s.judul}`,
-    description: `Transkrip NextTalks sesi ${s.nomor} (${s.hari}): "${s.kalimat[0][1]}" dan tiga kalimat lain yang dibawa pulang.`,
+    description: ringkas(`Transkrip NextTalks sesi ${s.nomor}: "${s.kalimat[0][1]}" — dan tiga kalimat lain yang dibawa pulang dari meja.`),
     alternates: { canonical: `${SITE}/sesi/${s.nomor}` },
   };
 }
@@ -22,18 +25,20 @@ export default async function Sesi({ params }) {
   const { nomor } = await params;
   const s = sesiByNomor(nomor);
   if (!s) notFound();
+  const hari = tanggalSesi(s.nomor).hari;
+  const berikut = tanggalSesi(BERIKUT.nomor);
   const i = ARSIP.indexOf(s);
   const lebihBaru = ARSIP[i - 1];
   const lebihLama = ARSIP[i + 1];
 
   return (
-    <main className="bg-room pt-32">
+    <main className="bg-room pt-28 md:pt-32">
       <header className="mx-auto max-w-4xl px-6">
         <p className="stamp text-live">
           <Link href="/arsip" className="hover:underline">Arsip</Link> · Sesi {s.nomor} · {s.tema}
         </p>
         <h1 className="mt-5 text-[2.4rem] leading-[1.06] text-ink md:text-[3.2rem]">{s.judul}</h1>
-        <p className="mt-4">{s.hari} · 19.00–21.00 WIB · {s.penonton.toLocaleString('id-ID')} penonton</p>
+        <p className="mt-4">{hari} · 19.00–21.00 WIB · {s.penonton.toLocaleString('id-ID')} penonton</p>
       </header>
 
       <section aria-labelledby="kalimat" className="mx-auto mt-14 max-w-4xl px-6">
@@ -68,7 +73,7 @@ export default async function Sesi({ params }) {
           </Link>
         ) : (
           <Link href="/#daftar" className="bg-room p-6 text-right hover:bg-room-2">
-            <span className="stamp text-live">Sesi {BERIKUT.nomor} · {BERIKUT.hari} →</span>
+            <span className="stamp text-live">Sesi {BERIKUT.nomor} · {berikut.hari} →</span>
             <span className="mt-2 block font-bold text-ink">{BERIKUT.judul}</span>
           </Link>
         )}

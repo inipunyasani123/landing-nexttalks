@@ -1,101 +1,72 @@
-'use client';
+import { ARSIP, BERIKUT, tanggalSesi } from '@/lib/sesi';
 
-import { motion } from 'framer-motion';
-import { BERIKUT } from '@/lib/sesi';
-
+/* Angka di bawah hero adalah aturan format, bukan klaim jumlah penonton. */
 const angka = [
-  ['1.000+', 'Penonton sesi sebelumnya'],
-  ['4', 'Pembicara per sesi'],
+  ['4', 'Pembicara di satu meja'],
   ['45 menit', 'Porsi tanya jawab'],
+  ['24 jam', 'Transkrip rapi dikirim'],
 ];
 
 export default function Hero() {
+  const t = tanggalSesi(BERIKUT.nomor);
+  const lalu = ARSIP[0];
   return (
-    <section className="relative overflow-hidden bg-room pt-28 pb-20 md:pt-36 md:pb-24">
+    <section className="relative overflow-hidden bg-room pt-24 pb-14 md:pt-36 md:pb-24">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-20">
           <div>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="stamp live-dot mb-8 flex items-center text-live"
-            >
-              Sesi {BERIKUT.nomor} · {BERIKUT.hari}
-            </motion.p>
+            <p className="stamp penanda naik mb-6 flex items-center text-live md:mb-8">
+              Sesi {BERIKUT.nomor} · {t.hari}
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-[2.5rem] leading-[1.06] text-ink sm:text-5xl lg:text-[3.6rem]"
-            >
+            <h1 className="text-[2.35rem] leading-[1.06] text-ink sm:text-5xl lg:text-[3.6rem]">
               Yang dibawa pulang
               <br />
               bukan rekamannya,
               <br />
               <span className="caption-bar">tapi satu kalimat.</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.16 }}
-              className="mt-8 max-w-lg leading-relaxed text-ink-soft"
-            >
+            <p className="naik naik-2 mt-6 max-w-lg leading-relaxed text-ink-soft md:mt-8">
               Webinar profesional dengan format percakapan: empat pembicara, satu meja, dan
               pertanyaan yang benar-benar dijawab. Transkripnya kami rapikan supaya Anda bisa
               mengutipnya lagi minggu depan.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.24 }}
-              className="mt-9 flex flex-col gap-4 sm:flex-row"
-            >
+            <div className="naik naik-3 mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4 md:mt-9">
               <a
                 href="#daftar"
                 className="inline-flex items-center justify-center bg-ink px-8 py-4 text-sm font-bold text-room transition-colors duration-300 hover:bg-live"
               >
-                Ambil Tempat
+                Ambil tempat
               </a>
               <a
                 href="#kutipan"
                 className="inline-flex items-center justify-center border border-ink/25 px-8 py-4 text-sm font-bold text-ink transition-colors duration-300 hover:border-ink/60"
               >
-                Baca Kutipannya
+                Baca kutipannya
               </a>
-            </motion.div>
+            </div>
 
-            <dl className="mt-14 grid gap-8 border-t border-wire pt-8 sm:grid-cols-3">
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-wire pt-6 sm:gap-8 md:mt-14 md:pt-8">
               {angka.map(([n, k]) => (
-                <div key={k}>
-                  <dt className="sr-only">{k}</dt>
-                  <dd>
-                    <span className="block text-2xl font-bold text-ink">{n}</span>
-                    <span className="stamp mt-2.5 block text-ink-soft">{k}</span>
-                  </dd>
+                <div key={k} className="flex flex-col-reverse justify-end">
+                  <dt className="stamp mt-2 text-ink-soft sm:mt-2.5">{k}</dt>
+                  <dd className="text-xl font-bold text-ink sm:text-2xl">{n}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          {/* Kartu transkrip — menggantikan foto stok yang isinya tidak
-              berkaitan dengan webinar (poster berbahasa Korea) dan template
-              ber-Lorem ipsum. Motif takarir ini sekaligus identitas varian. */}
-          <motion.figure
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="border border-wire bg-room-2 p-7 sm:p-9"
-          >
-            <figcaption className="mb-7 flex items-center justify-between border-b border-wire pb-4">
-              <span className="stamp live-dot flex items-center text-live">Sesi 12 · Cuplikan</span>
+          {/* Kartu transkrip: cuplikan sesi lalu, lengkap dengan penanda menit.
+              Di ponsel disembunyikan karena bagian berikutnya memuat transkrip yang sama. */}
+          <figure className="naik naik-2 hidden border border-wire bg-room-2 p-6 sm:block sm:p-9">
+            <figcaption className="mb-6 flex items-center justify-between border-b border-wire pb-4 sm:mb-7">
+              <span className="stamp penanda flex items-center text-live">Sesi {lalu.nomor} · Cuplikan</span>
               <span className="stamp text-ink-soft">Transkrip</span>
             </figcaption>
 
-            <ol className="transcript-rail space-y-6 pl-5">
+            <ol className="transcript-rail space-y-5 pl-5 sm:space-y-6">
               <li>
                 <span className="stamp text-ink-soft">00:23 · Penanya</span>
                 <p className="mt-2 leading-relaxed text-ink-soft italic">
@@ -112,13 +83,13 @@ export default function Hero() {
               </li>
             </ol>
 
-            <p className="mt-8 border-t border-wire pt-7">
+            <p className="mt-7 border-t border-wire pt-6 sm:mt-8 sm:pt-7">
               <span className="caption-bar text-sm">
                 &ldquo;Pertanyaan yang bagus lebih berharga daripada jawaban yang panjang.&rdquo;
               </span>
             </p>
-            <p className="stamp mt-4 text-ink-soft">Menit 41 · Sesi 12</p>
-          </motion.figure>
+            <p className="stamp mt-4 text-ink-soft">Menit 41 · Sesi {lalu.nomor}</p>
+          </figure>
         </div>
       </div>
     </section>

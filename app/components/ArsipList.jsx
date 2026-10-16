@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ARSIP, TEMA } from '@/lib/sesi';
 
-export default function ArsipList() {
+export default function ArsipList({ tanggal }) {
   const [tema, setTema] = useState('Semua');
   const [cari, setCari] = useState('');
 
@@ -50,11 +50,11 @@ export default function ArsipList() {
 
       <ol className="mt-4">
         {hasil.map((a) => (
-          <li key={a.nomor} className="grid gap-6 border-b border-wire py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+          <li key={a.nomor} className="grid gap-5 border-b border-wire py-8 md:gap-6 md:py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <div>
               <p className="stamp text-live">Sesi {a.nomor} · {a.tema}</p>
               <h2 className="mt-3 text-2xl text-ink">{a.judul}</h2>
-              <p className="mt-2 text-sm">{a.hari} · {a.penonton.toLocaleString('id-ID')} penonton</p>
+              <p className="mt-2 text-sm">{tanggal[a.nomor]} · {a.penonton.toLocaleString('id-ID')} penonton</p>
               <Link href={`/sesi/${a.nomor}`} className="stamp mt-5 inline-block border-b border-live/50 pb-1 text-live hover:border-live">
                 Baca transkrip
               </Link>

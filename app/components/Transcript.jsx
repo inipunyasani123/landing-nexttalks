@@ -8,7 +8,7 @@ import TranskripList from './TranskripList';
 export default function Transcript() {
   const s = ARSIP[0];
   return (
-    <section id="kutipan" className="scroll-mt-16 bg-room-2 py-20 md:py-28">
+    <section id="kutipan" className="scroll-mt-16 bg-room-2 py-16 md:py-28">
       <div className="mx-auto max-w-4xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="stamp mb-5 text-live">Transkrip sesi {s.nomor} · {s.judul}</p>

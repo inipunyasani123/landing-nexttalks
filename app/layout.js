@@ -1,5 +1,4 @@
 import { Inter_Tight, Inter } from "next/font/google";
-import MotionProvider from "./components/MotionProvider";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import "./globals.css";
@@ -9,12 +8,17 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"NextTalks","description":"Seri percakapan bulanan: empat pembicara, satu meja","url":"https://landing-nexttalks.pintuweb.id","inLanguage":"id"};
 
+const DESKRIPSI = "NextTalks, seri percakapan tiap Kamis kedua: empat pembicara di satu meja, 45 menit tanya jawab, dan transkrip rapi yang dikirim dalam 24 jam.";
+
+// Tanggal sesi dihitung dari hari ini (lib/sesi.js), jadi halaman dibangun ulang tiap jam.
+export const revalidate = 3600;
+
 export const metadata = {
   metadataBase: new URL("https://landing-nexttalks.pintuweb.id"),
   title: { default: "NextTalks — Empat Pembicara, Satu Meja", template: "%s — NextTalks" },
-  description: "NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 \"Memutuskan dengan data yang tidak lengkap\", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.",
+  description: DESKRIPSI,
   applicationName: "NextTalks",
-  keywords: ["webinar", "pembicara inspiratif", "seminar", "talk show", "konferensi"],
+  keywords: ["webinar percakapan", "diskusi panel daring", "transkrip webinar", "webinar pengambilan keputusan", "seri diskusi bulanan"],
   authors: [{ name: "NextTalks" }],
   creator: "NextTalks",
   publisher: "NextTalks",
@@ -25,13 +29,13 @@ export const metadata = {
     url: "https://landing-nexttalks.pintuweb.id",
     siteName: "NextTalks",
     title: "NextTalks — Empat Pembicara, Satu Meja",
-    description: "NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 \"Memutuskan dengan data yang tidak lengkap\", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.",
+    description: DESKRIPSI,
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "NextTalks — Empat Pembicara, Satu Meja" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "NextTalks — Empat Pembicara, Satu Meja",
-    description: "NextTalks: empat pembicara, satu meja, tiap Kamis kedua. Sesi 13 \"Memutuskan dengan data yang tidak lengkap\", Kamis 8 Oktober 2026. Transkrip rapi dikirim dalam 24 jam.",
+    description: DESKRIPSI,
     images: ["/og.jpg"],
   },
   robots: {
@@ -45,12 +49,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body className={`${interTight.variable} ${inter.variable} antialiased`}>
-        <MotionProvider>
-          <a href="#konten" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-room">Lompat ke konten</a>
-          <SiteHeader />
-          <div id="konten">{children}</div>
-          <SiteFooter />
-        </MotionProvider>
+        <a href="#konten" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-room">Lompat ke konten</a>
+        <SiteHeader />
+        <div id="konten">{children}</div>
+        <SiteFooter />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
         <aside aria-label="Tentang situs demo ini" style={{ display: 'block', margin: 0, padding: '12px 16px', background: '#0f1b33', color: '#dfe6f3', font: '400 13px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', textAlign: 'center' }}>
           Situs demo buatan PintuWeb — nama dan isinya rekaan.{' '}

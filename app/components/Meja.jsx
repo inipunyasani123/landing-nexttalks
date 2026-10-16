@@ -12,16 +12,16 @@ const POSISI = {
 export default function Meja() {
   const { pembicara, moderator } = BERIKUT;
   return (
-    <section id="meja" className="scroll-mt-16 bg-room-2 py-20 md:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-        <div className="relative mx-auto aspect-square w-full max-w-sm" aria-hidden="true">
+    <section id="meja" className="scroll-mt-16 bg-room-2 py-16 md:py-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 md:gap-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <div className="relative mx-auto aspect-square w-full max-w-[15rem] sm:max-w-sm" aria-hidden="true">
           <div className="absolute inset-[18%] flex items-center justify-center rounded-full border-2 border-wire bg-room">
             <span className="stamp text-center">Satu meja<br />sesi {BERIKUT.nomor}</span>
           </div>
           {pembicara.map((p) => (
             <span
               key={p.inisial}
-              className={`absolute flex h-16 w-16 items-center justify-center rounded-full bg-caption font-[family-name:var(--font-inter-tight)] text-lg font-bold text-white ${POSISI[p.kursi]}`}
+              className={`absolute flex h-12 w-12 items-center justify-center rounded-full bg-caption sm:h-16 sm:w-16 font-[family-name:var(--font-inter-tight)] text-base font-bold text-white sm:text-lg ${POSISI[p.kursi]}`}
             >
               {p.inisial}
             </span>
@@ -37,7 +37,7 @@ export default function Meja() {
             Dipandu {moderator.nama}, {moderator.peran}, yang tugasnya hanya menjaga waktu
             dan membacakan pertanyaan Anda.
           </p>
-          <ul className="mt-10 space-y-7">
+          <ul className="mt-8 space-y-6 md:mt-10 md:space-y-7">
             {pembicara.map((p) => (
               <li key={p.nama}>
                 <h3 className="text-lg text-ink">

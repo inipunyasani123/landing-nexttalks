@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { BERIKUT, HARGA } from '@/lib/sesi';
 
-export default function Registration() {
+export default function Registration({ hari }) {
   const [paket, setPaket] = useState('Satu sesi');
   const [selesai, setSelesai] = useState(false);
 
@@ -23,15 +23,15 @@ export default function Registration() {
   const pilih = HARGA.find((h) => h.nama === paket);
 
   return (
-    <section id="daftar" className="scroll-mt-16 bg-caption py-20 text-white md:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <section id="daftar" className="scroll-mt-16 bg-caption py-16 text-white md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 md:gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
-          <p className="stamp live-dot mb-5 flex items-center text-white">Ambil tempat</p>
+          <p className="stamp penanda mb-5 flex items-center text-white">Ambil tempat</p>
           <h2 className="text-[2rem] leading-[1.1] text-white md:text-[2.6rem]">
             Sesi {BERIKUT.nomor}: {BERIKUT.judul}
           </h2>
           <p className="mt-5 leading-relaxed text-white/80">
-            {BERIKUT.hari} · {BERIKUT.jam}. Tautan ruang bicara dikirim ke surel Anda tiga jam sebelum sesi dimulai.
+            {hari} · {BERIKUT.jam}. Tautan ruang bicara dikirim ke surel Anda tiga jam sebelum sesi dimulai.
           </p>
         </div>
 
@@ -47,12 +47,12 @@ export default function Registration() {
             <form onSubmit={kirim} className="space-y-5">
               <fieldset>
                 <legend className="stamp mb-3 text-ink">Paket</legend>
-                <div className="grid gap-3 sm:grid-cols-3">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {HARGA.map((h) => (
-                    <label key={h.nama} className={`cursor-pointer border p-3.5 ${paket === h.nama ? 'border-ink bg-room-2' : 'border-wire hover:border-ink/40'}`}>
+                    <label key={h.nama} className={`cursor-pointer border p-2.5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-live sm:p-3.5 ${paket === h.nama ? 'border-ink bg-room-2' : 'border-wire hover:border-ink/40'}`}>
                       <input type="radio" name="paket" value={h.nama} checked={paket === h.nama} onChange={() => setPaket(h.nama)} className="sr-only" />
                       <span className="stamp block text-ink">{h.nama}</span>
-                      <span className="mt-1.5 block text-sm text-ink">{h.harga}</span>
+                      <span className="mt-1.5 block text-xs whitespace-nowrap text-ink sm:text-sm">{h.harga}</span>
                     </label>
                   ))}
                 </div>
