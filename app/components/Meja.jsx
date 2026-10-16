@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import { BERIKUT } from '@/lib/sesi';
 
-/* Empat pembicara digambarkan sebagai kursi di sekeliling satu meja bundar,
-   dilihat dari atas. Tidak ada podium, tidak ada foto panggung. */
+/* Empat pembicara digambarkan sebagai kursi di sekeliling satu meja bundar, dilihat dari atas.
+   Orangnya fiktif, jadi potretnya ilustrasi cetak buatan sendiri (public/images/meja), bukan foto. */
 const POSISI = {
   Utara: 'top-0 left-1/2 -translate-x-1/2',
   Timur: 'top-1/2 right-0 -translate-y-1/2',
@@ -19,12 +20,14 @@ export default function Meja() {
             <span className="stamp text-center">Satu meja<br />sesi {BERIKUT.nomor}</span>
           </div>
           {pembicara.map((p) => (
-            <span
+            <Image
               key={p.inisial}
-              className={`absolute flex h-12 w-12 items-center justify-center rounded-full bg-caption sm:h-16 sm:w-16 font-[family-name:var(--font-inter-tight)] text-base font-bold text-white sm:text-lg ${POSISI[p.kursi]}`}
-            >
-              {p.inisial}
-            </span>
+              src={`/images/meja/${p.potret}.webp`}
+              alt=""
+              width={64}
+              height={64}
+              className={`absolute h-14 w-14 rounded-full ring-2 ring-caption sm:h-[4.5rem] sm:w-[4.5rem] ${POSISI[p.kursi]}`}
+            />
           ))}
         </div>
 
@@ -33,18 +36,24 @@ export default function Meja() {
           <h2 className="text-[2rem] leading-[1.1] text-ink md:text-[2.6rem]">
             Empat orang yang tidak selalu setuju
           </h2>
-          <p className="mt-4 leading-relaxed">
-            Dipandu {moderator.nama}, {moderator.peran}, yang tugasnya hanya menjaga waktu
-            dan membacakan pertanyaan Anda.
+          <p className="mt-4 flex items-start gap-4 leading-relaxed">
+            <Image src={`/images/meja/${moderator.potret}.webp`} alt="" width={48} height={48} className="mt-1 h-12 w-12 shrink-0 rounded-full" />
+            <span>
+              Dipandu {moderator.nama}, {moderator.peran}, yang tugasnya hanya menjaga waktu
+              dan membacakan pertanyaan Anda.
+            </span>
           </p>
           <ul className="mt-8 space-y-6 md:mt-10 md:space-y-7">
             {pembicara.map((p) => (
-              <li key={p.nama}>
-                <h3 className="text-lg text-ink">
-                  <span className="caption-bar">{p.nama}</span>
-                </h3>
-                <p className="stamp mt-2">{p.peran}</p>
-                <p className="mt-2 leading-relaxed text-ink">{p.sudut}</p>
+              <li key={p.nama} className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4">
+                <Image src={`/images/meja/${p.potret}.webp`} alt="" width={48} height={48} className="mt-0.5 h-12 w-12 rounded-full" />
+                <div>
+                  <h3 className="text-lg text-ink">
+                    <span className="caption-bar">{p.nama}</span>
+                  </h3>
+                  <p className="stamp mt-2">{p.peran}</p>
+                  <p className="mt-2 leading-relaxed text-ink">{p.sudut}</p>
+                </div>
               </li>
             ))}
           </ul>
