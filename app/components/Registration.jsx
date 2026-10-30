@@ -72,14 +72,14 @@ export default function Registration({ hari }) {
                 <textarea id="tanya" name="tanya" rows={3} className={`${input} resize-y`} />
               </div>
               <label className="flex gap-3 text-sm leading-relaxed">
-                <input type="checkbox" name="kabari" className="mt-1 h-4 w-4 shrink-0 accent-[#2447d6]" />
+                <input type="checkbox" name="kabari" className="mt-0.5 h-5 w-5 shrink-0 accent-[#2447d6]" />
                 <span>Kabari saya lewat surel saat pendaftaran sesi berikutnya dibuka (opsional).</span>
               </label>
               <label className="flex gap-3 text-sm leading-relaxed">
-                <input type="checkbox" required className="mt-1 h-4 w-4 shrink-0 accent-[#2447d6]" />
+                <input type="checkbox" required className="mt-0.5 h-5 w-5 shrink-0 accent-[#2447d6]" />
                 <span>
-                  Saya menyetujui <Link href="/terms" className="font-semibold text-live underline underline-offset-4">ketentuan</Link> dan{' '}
-                  <Link href="/privacy" className="font-semibold text-live underline underline-offset-4">kebijakan privasi</Link> NextTalks.
+                  Saya menyetujui <Link href="/terms" className="inline-block py-2 font-semibold text-live underline underline-offset-4">ketentuan</Link> dan{' '}
+                  <Link href="/privacy" className="inline-block py-2 font-semibold text-live underline underline-offset-4">kebijakan privasi</Link> NextTalks.
                 </span>
               </label>
               <button type="submit" className="w-full bg-ink py-4 text-sm font-bold text-room hover:bg-live">

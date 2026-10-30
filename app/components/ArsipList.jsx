@@ -27,7 +27,7 @@ export default function ArsipList({ tanggal }) {
               type="button"
               aria-pressed={tema === t}
               onClick={() => setTema(t)}
-              className={`stamp px-3.5 py-2 ${tema === t ? 'bg-ink text-room' : 'border border-wire text-ink hover:border-ink'}`}
+              className={`stamp inline-flex min-h-11 items-center px-3.5 ${tema === t ? 'bg-ink text-room' : 'border border-wire text-ink hover:border-ink'}`}
             >
               {t}
             </button>
@@ -55,7 +55,7 @@ export default function ArsipList({ tanggal }) {
               <p className="stamp text-live">Sesi {a.nomor} · {a.tema}</p>
               <h2 className="mt-3 text-2xl text-ink">{a.judul}</h2>
               <p className="mt-2 text-sm">{tanggal[a.nomor]} · {a.penonton.toLocaleString('id-ID')} penonton</p>
-              <Link href={`/sesi/${a.nomor}`} className="stamp mt-5 inline-block border-b border-live/50 pb-1 text-live hover:border-live">
+              <Link href={`/sesi/${a.nomor}`} className="stamp mt-3 inline-flex min-h-11 items-center border-b border-live/50 text-live hover:border-live">
                 Baca transkrip
               </Link>
             </div>

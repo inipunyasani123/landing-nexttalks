@@ -35,7 +35,7 @@ export default async function Sesi({ params }) {
     <main className="bg-room pt-28 md:pt-32">
       <header className="mx-auto max-w-4xl px-6">
         <p className="stamp text-live">
-          <Link href="/arsip" className="hover:underline">Arsip</Link> · Sesi {s.nomor} · {s.tema}
+          <Link href="/arsip" className="inline-block py-3 hover:underline">Arsip</Link> · Sesi {s.nomor} · {s.tema}
         </p>
         <h1 className="mt-5 text-[2.4rem] leading-[1.06] text-ink md:text-[3.2rem]">{s.judul}</h1>
         <p className="mt-4">{hari} · 19.00–21.00 WIB · {s.penonton.toLocaleString('id-ID')} penonton</p>

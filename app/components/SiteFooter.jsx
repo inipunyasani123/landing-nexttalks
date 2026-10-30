@@ -15,20 +15,20 @@ export default function SiteFooter() {
         </div>
         <nav aria-label="Arsip transkrip">
           <p className="stamp mb-4 text-live">Arsip</p>
-          <ul className="space-y-2.5 text-sm">
+          <ul className="space-y-0.5 text-sm">
             {ARSIP.map((a) => (
               <li key={a.nomor}>
-                <Link href={`/sesi/${a.nomor}`} className="hover:text-ink">Sesi {a.nomor} · {a.judul}</Link>
+                <Link href={`/sesi/${a.nomor}`} className="inline-block py-3 hover:text-ink">Sesi {a.nomor} · {a.judul}</Link>
               </li>
             ))}
           </ul>
         </nav>
         <nav aria-label="Informasi">
           <p className="stamp mb-4 text-live">Informasi</p>
-          <ul className="space-y-2.5 text-sm">
-            <li><Link href="/arsip" className="hover:text-ink">Semua transkrip</Link></li>
-            <li><Link href="/terms" className="hover:text-ink">Ketentuan</Link></li>
-            <li><Link href="/privacy" className="hover:text-ink">Kebijakan privasi</Link></li>
+          <ul className="space-y-0.5 text-sm">
+            <li><Link href="/arsip" className="inline-block py-3 hover:text-ink">Semua transkrip</Link></li>
+            <li><Link href="/terms" className="inline-block py-3 hover:text-ink">Ketentuan</Link></li>
+            <li><Link href="/privacy" className="inline-block py-3 hover:text-ink">Kebijakan privasi</Link></li>
           </ul>
         </nav>
       </div>

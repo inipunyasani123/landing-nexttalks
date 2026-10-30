@@ -20,7 +20,7 @@ export default function Legal({ label, judul, intro, pasal }) {
         </ol>
         <p className="mt-10 text-sm leading-relaxed">
           Draf untuk purwarupa desain; perlu ditinjau sebelum dipakai sungguhan.{' '}
-          <Link href="/" className="font-semibold text-live underline underline-offset-4">Kembali ke beranda</Link>
+          <Link href="/" className="inline-block py-3 font-semibold text-live underline underline-offset-4">Kembali ke beranda</Link>
         </p>
       </article>
     </main>

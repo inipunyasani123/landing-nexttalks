@@ -26,10 +26,10 @@ export default function Transcript() {
         <div className="mt-12 flex flex-col gap-4 border-t border-wire pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm">Transkrip lengkap tiap sesi dikirim ke peserta dalam 24 jam.</p>
           <div className="flex flex-wrap gap-5">
-            <Link href={`/sesi/${s.nomor}`} className="stamp border-b border-live/50 pb-1 text-live hover:border-live">
+            <Link href={`/sesi/${s.nomor}`} className="stamp inline-flex min-h-11 items-center border-b border-live/50 text-live hover:border-live">
               Baca transkrip sesi {s.nomor}
             </Link>
-            <Link href="/arsip" className="stamp border-b border-ink/30 pb-1 text-ink hover:border-ink">
+            <Link href="/arsip" className="stamp inline-flex min-h-11 items-center border-b border-ink/30 text-ink hover:border-ink">
               Arsip semua sesi
             </Link>
           </div>
