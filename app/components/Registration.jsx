@@ -40,7 +40,7 @@ export default function Registration({ hari }) {
             <div role="status" className="py-8">
               <p className="stamp text-live">Tercatat · {paket}</p>
               <p className="mt-4 text-2xl font-bold text-ink">Sampai jumpa di meja.</p>
-              <p className="mt-3 leading-relaxed">Ini purwarupa desain, jadi tidak ada data yang dikirim dan tidak ada surel yang akan datang.</p>
+              <p className="mt-3 leading-relaxed">Ini baru tampilan formulir, jadi tidak ada data yang dikirim dan tidak ada surel yang akan datang.</p>
               <button type="button" onClick={() => setSelesai(false)} className="stamp mt-6 border border-ink/30 px-4 py-3 text-ink hover:border-ink">Isi ulang</button>
             </div>
           ) : (
@@ -85,7 +85,7 @@ export default function Registration({ hari }) {
               <button type="submit" className="w-full bg-ink py-4 text-sm font-bold text-room hover:bg-live">
                 Ambil tempat · {pilih.harga}
               </button>
-              <p className="text-xs leading-relaxed">Purwarupa desain — formulir ini tidak mengirim data ke mana pun.</p>
+              <p className="text-xs leading-relaxed">Formulir ini hanya tampilan dan tidak mengirim data ke mana pun.</p>
             </form>
           )}
         </div>

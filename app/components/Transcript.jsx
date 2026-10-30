@@ -34,7 +34,7 @@ export default function Transcript() {
             </Link>
           </div>
         </div>
-        <p className="stamp mt-8 leading-[1.7]">Transkrip di situs ini adalah ilustrasi untuk keperluan purwarupa desain.</p>
+        <p className="stamp mt-8 leading-[1.7]">Transkrip di situs ini rekaan, dibuat untuk keperluan desain.</p>
       </div>
     </section>
   );

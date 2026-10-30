@@ -33,7 +33,7 @@ export default function SiteFooter() {
         </nav>
       </div>
       <p className="stamp mx-auto max-w-6xl border-t border-wire px-6 py-6 leading-[1.7]">
-        © 2026 NextTalks · Nama, kutipan, jadwal, angka, dan harga di situs ini adalah contoh untuk purwarupa desain.
+        © 2026 NextTalks · Nama, kutipan, jadwal, angka, dan harga di situs ini rekaan untuk keperluan desain.
       </p>
     </footer>
   );

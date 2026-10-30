@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { BERIKUT } from '@/lib/sesi';
 
 /* Empat pembicara digambarkan sebagai kursi di sekeliling satu meja bundar, dilihat dari atas.
-   Orangnya fiktif, jadi potretnya ilustrasi cetak buatan sendiri (public/images/meja), bukan foto. */
+   Orangnya fiktif, jadi potretnya ilustrasi tampak belakang tanpa wajah buatan sendiri (public/images/meja). */
 const POSISI = {
   Utara: 'top-0 left-1/2 -translate-x-1/2',
   Timur: 'top-1/2 right-0 -translate-y-1/2',

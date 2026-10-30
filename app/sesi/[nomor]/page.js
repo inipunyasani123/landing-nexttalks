@@ -56,7 +56,7 @@ export default async function Sesi({ params }) {
       <section aria-labelledby="transkrip" className="mx-auto mt-16 max-w-4xl px-6 pb-8">
         <h2 id="transkrip" className="stamp mb-8 text-ink">Potongan transkrip</h2>
         <TranskripList baris={s.transkrip} />
-        <p className="stamp mt-10 leading-[1.7]">Nama pembicara disamarkan sebagai Pembicara I–IV. Transkrip ini ilustrasi untuk purwarupa desain.</p>
+        <p className="stamp mt-10 leading-[1.7]">Nama pembicara disamarkan sebagai Pembicara I–IV. Transkrip ini rekaan, dibuat untuk keperluan desain.</p>
       </section>
 
       <nav aria-label="Sesi lain" className="mx-auto mt-10 grid max-w-4xl gap-px border-y border-wire bg-wire sm:grid-cols-2">
